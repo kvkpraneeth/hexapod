@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:macro name="leg_joints" params="suffix">
+
+      <joint_name>j_c1_${suffix}</joint_name>
+      <joint_name>j_thigh_${suffix}</joint_name>
+      <joint_name>j_tibia_${suffix}</joint_name>
+
+    </xacro:macro>
+
+    <xacro:macro name="phantomx_ign">
+    
+      <gazebo>
+        <plugin name="ignition::gazebo::systems::JointStatePublisher" filename="libignition-gazebo-joint-state-publisher-system.so">
+          <xacro:leg_joints suffix="rf"/>
+          <xacro:leg_joints suffix="lf"/>
+          <xacro:leg_joints suffix="rm"/>
+          <xacro:leg_joints suffix="lm"/>
+          <xacro:leg_joints suffix="rr"/>
+          <xacro:leg_joints suffix="lr"/>
+        </plugin>        
+      </gazebo>
+
+      <gazebo reference="MP_BODY">    
+        <material>Gazebo/Grey</material>
+      </gazebo>
+
+      <gazebo>
+        <plugin name="ignition::gazebo::systems::JointController" filename="ignition-gazebo-joint-controller-system">
+          <xacro:leg_joints suffix="rf"/>
+          <xacro:leg_joints suffix="lf"/>
+          <xacro:leg_joints suffix="rm"/>
+          <xacro:leg_joints suffix="lm"/>
+          <xacro:leg_joints suffix="rr"/>
+          <xacro:leg_joints suffix="lr"/>
+        </plugin>  
+      </gazebo>
+
+    </xacro:macro>
+
+</robot>
