@@ -26,6 +26,14 @@
 
     </xacro:macro>
 
+    <xacro:macro name="pid">
+      <position_p_gain>3000</position_p_gain>
+      <position_d_gain>15</position_d_gain>
+      <position_i_gain>1650</position_i_gain>
+      <position_i_min>-15</position_i_min>
+      <position_i_max>15</position_i_max>
+    </xacro:macro>
+
     <xacro:macro name="phantomx_ign">
     
       <gazebo>
@@ -51,13 +59,14 @@
       <xacro:leg_colours suffix="rr"/>
 
       <gazebo>
-        <plugin name="ignition::gazebo::systems::JointController" filename="ignition-gazebo-joint-controller-system">
+        <plugin name="ignition::gazebo::systems::JointTrajectoryController" filename="ignition-gazebo-joint-trajectory-controller-system">
           <xacro:leg_joints suffix="rf"/>
           <xacro:leg_joints suffix="lf"/>
           <xacro:leg_joints suffix="rm"/>
           <xacro:leg_joints suffix="lm"/>
           <xacro:leg_joints suffix="rr"/>
           <xacro:leg_joints suffix="lr"/>
+          <xacro:pid/>
         </plugin>  
       </gazebo>
 
