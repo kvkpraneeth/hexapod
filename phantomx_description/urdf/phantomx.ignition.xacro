@@ -61,10 +61,15 @@
       <gazebo>
         <plugin name="ignition::gazebo::systems::JointTrajectoryController" filename="ignition-gazebo-joint-trajectory-controller-system">
           <xacro:leg_joints suffix="rf"/>
+          <xacro:pid/>
           <xacro:leg_joints suffix="lf"/>
+          <xacro:pid/>
           <xacro:leg_joints suffix="rm"/>
+          <xacro:pid/>
           <xacro:leg_joints suffix="lm"/>
+          <xacro:pid/>
           <xacro:leg_joints suffix="rr"/>
+          <xacro:pid/>
           <xacro:leg_joints suffix="lr"/>
           <xacro:pid/>
         </plugin>  
